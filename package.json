@@ -1,0 +1,32 @@
+{
+  "name": "basic_node_blog_camilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camassandra/basic_node_blog_camilla.git"
+  },
+  "keywords": [
+    "blog",
+    "user",
+    "app",
+    "node"
+  ],
+  "author": "camilla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camassandra/basic_node_blog_camilla/issues"
+  },
+  "homepage": "https://github.com/camassandra/basic_node_blog_camilla#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "pug": "^2.0.0-beta11",
+    "sequelize": "^3.30.2"
+  }
+}
