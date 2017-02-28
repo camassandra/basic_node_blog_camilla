@@ -1,0 +1,57 @@
+.html
+  title CYPhil_register
+  head
+    style
+    link(href='css/styling.css', rel='stylesheet')
+    link(href='css/materialize.css')
+    link(link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet")
+  
+
+block content
+body 
+
+nav
+  .nav-wrapper
+    .ul
+      .li
+        a.a(href='/') Home
+      .li
+        a.a(href='/about') About
+      .li
+        img(src='images/selfdestr.jpg', alt='infinito', height='142', width='110', align='right') 
+.row
+  .h1 REGISTER A NEW USER BELOW
+  form#tfheader
+    .row
+      .tftextinput
+        input(placeholder='Name', id='firstname' type='text')
+        |  
+        label(for='first_name') First Name
+      .tftextinput
+        input(placeholder='Surname' id='secondname' type='text')
+        |  
+        label(for='last_name') Last Name
+    .row
+      .tftextinput
+        input(placeholder='new username', id='username')
+        |  
+        label(for='username') Create a Username
+    
+    .row
+      .tftextinput
+        input#password.validate(placeholder='new password', id='password',  type='password')
+        |  
+        label(for='password') Type a New Password
+    .row
+      .tftextinput
+        input#email.validate(placeholder='new email address', id='email', type='email')
+        |  
+        label(for='email') Enter a valid Email Address
+    .row
+      input.tfbutton(type='submit', value='submit ')
+
+
+
+
+    

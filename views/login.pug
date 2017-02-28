@@ -1,0 +1,41 @@
+.html
+  title Phil_Login User
+  head
+    style
+    link(href='css/styling.css', rel='stylesheet')
+    link(href='css/materialize.css')
+    link(link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet")
+  
+
+block content
+body 
+
+nav
+  .nav-wrapper
+    .ul
+      .li
+        a.a(href='/') Home
+      .li
+        a.a(href='/about') About
+      .li 
+        img(src='images/selfdestr.jpg', alt='LOGO', height='142', width='110', align='right', href='/about' )
+.row
+  .h1 The dead poets' society is not dead! Login  
+  form#tfheader(method='post', action='/loginhandler')
+    .row
+      .tftextinput
+        input(placeholder='username' id='username')
+        |  
+        label(for='password') Type your Username
+    
+    .row
+      .tftextinput
+        input(placeholder='password' id='userpassw' type='password')
+        |  
+        label(for='password') Type your Password
+    .row
+      input.tfbutton(type='submit', value='Log In ')
+
+.p
+

@@ -1,32 +1,29 @@
 
-<!--extends layout-->
-html
-  title Homepage
+#html
+  title CYPhil_Homepage
   head
     style
+    link(href='css/styling.css', rel='stylesheet')
+    link(href='css/materialize.css')
+    link(href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet")
   nav
   .nav-wrapper
-    a.brand-logo.right(href='#') Logo
-    ul#nav-mobile.left.hide-on-med-and-down
-      li
-        a(href='sass.html') Some
-      li
-        a(href='badges.html') Awe
-      li
-        a(href='collapsible.html') Log Out
-    
-  
-block content
-  .main.container
-    .row
-      .col-md-6.col-md-offset-3
-        
-body
-       
-    h1 <strong> So you are here for first time uh </strong>
-    
-  
+    .ul
+      .li
+        a.a(href='/register') Register
+      .li
+        a.a(href='/userlogin') Login
+      .li
+        a.a(href='/about') About
 
+block content      
+body
+
+    .p 
+    img#homeimg(src='images/selfdestr.jpg', alt='LOGO', height='142', width='110', align='middle') 
+
+    .h1 <strong> Cyber-Poetry CAN save your life. Register to get the most awesome poetry  </strong>
 
     script(src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
@@ -36,7 +33,7 @@ body
       var hasVisited = Cookies.get('visited')
       if(hasVisited === 'true'){
         $(document).ready(function(){
-          $('h1').html('So you are back uh')
+          $('.h1').html('Cyber-Poetry will save your soul. You can log in to see your lifesaving collection')
         })
       }
       else {
@@ -44,36 +41,4 @@ body
       }
 
 
-.row
-  form.col.s12
-    .row
-      .input-field.col.s6
-        input#first_name.validate(placeholder='Placeholder', type='text')
-        |  
-        label(for='first_name') First Name
-      .input-field.col.s6
-        input#last_name.validate(type='text')
-        |  
-        label(for='last_name') Last Name
-    .row
-      .input-field.col.s12
-        input#disabled.validate(disabled='', value='I am not editable', type='text')
-        |  
-        label(for='disabled') Disabled
-    .row
-      .input-field.col.s12
-        input#password.validate(type='password')
-        |  
-        label(for='password') Password
-    .row
-      .input-field.col.s12
-        input#email.validate(type='email')
-        |  
-        label(for='email') Email
-    .row
-      .col.s12
-        | This is an inline input field:
-        .input-field.inline
-          input#email.validate(type='email')
-          |  
-          label(for='email', data-error='wrong', data-success='right') Email
+

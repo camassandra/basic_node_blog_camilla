@@ -1,0 +1,66 @@
+.html
+  title Phil_UserSession
+  head
+    style
+    link(href='css/styling.css', rel='stylesheet')
+    link(href='css/materialize.css')
+    link(link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet")
+  
+
+block content
+body 
+
+nav
+  .nav-wrapper
+    .ul
+      .li
+        a(href='/') Home
+      .li
+        a(href='/about') About
+      .li 
+        img(src='images/selfdestr.jpg', alt='LOGO', height='142', width='110', align='right', href='/about' )
+.row
+  .h1 WELCOME TO YOUR CYBERPOETRY PROFILE
+  p HERE YOU CAN  
+    a.link(href='/allposts') CHECK OUT AND COMMENT ALL CYBERPOETRY 
+  .h1 POST NEW CYBERPOETRY
+
+  form(method='post', action='/posthandler')
+    row
+    p TITLE of your post
+      .input-field
+      input.tftextinput(type='text', id='title' name='titlepostqr')
+    row
+    p BODY of your post
+      .input-field
+      input.tftextinput(type='text', id='body', name='bodypostqr', rows='10', tabindex='4')
+      
+    input.tfbutton(type='submit', value='Post It!')
+  
+
+
+  .h1 OR CONTEMPLATE YOUR OWN CYBERPOETRY 
+    each Post in posts
+    
+      p <strong> #{Post.title} </strong>
+   
+      p #{Post.body}
+      section
+      header
+      #respond
+        h2 Leave a Comment
+        form#commentform(method='post', action='/commenthandler')
+          p.required(for='comment_author') Your name  
+            input.tftextinput#comment_author(type='text', name='comment_author', value='', tabindex='1', required='required')
+            
+          p.tftextinput.required(for='email') Your email
+           
+            input.tftextinput#email(type='email', name='email_author', value='', tabindex='2', required='required')
+           
+          p.tftextinput.required(for='comment') Your message
+            textarea#comment(name='comment', rows='10', tabindex='4', required='required')
+        
+          input.tfbutton(name='submit', type='submit', value='Submit comment')
+
+
