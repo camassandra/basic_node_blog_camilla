@@ -2,6 +2,7 @@ var express = require ('express');
 var app = express();
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var jsdom = require('jsdom');
 
 const Db = require(__dirname +'/db_module.js')
 
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.set('views', __dirname+'/views');
 app.set('view engine', 'pug');
+
 
 //homepage 
 app.get('/', function(req, response) {
@@ -36,6 +38,49 @@ app.get('/register', function(req, response){
 });
 //registering a new user
 
+
+app.post('/newuserhandler', function(req, response){
+	console.log('handling new user request')
+	var errorMessage = 'Please enter a valid '
+	var target = '';
+
+
+	if (req.body.firstname.length === 0) {
+		target = 'first name'
+	
+	} 
+	else if (req.body.secondname.length === 0) {
+		target = 'second name'
+		
+	}
+	else if (req.body.username.length === 0) {
+		target = 'username'
+	
+	}
+	else if (req.body.password.length === 0) {
+		target = 'password'
+		
+	}
+	else if (req.body.email.length === 0) {
+		target = 'email address'
+		
+	}
+
+	if (target.length === 0) {
+		Db.Users.create({
+		firstname: req.body.firstname,
+		secondname: req.body.secondname ,
+		username: req.body.username,
+		password: req.body.password,
+		email: req.body.email,
+	})
+		response.redirect('/?message=' + encodeURIComponent("Successfully Registered."));
+	}
+	else response.redirect('/register?message=' + encodeURIComponent(errorMessage + target) + {errMess : errorMessage + target})
+});
+
+
+    
 app.post('/newuserhandler', function(req, response){
 	console.log('handling new user request')
 	var errorMessage = 'Please enter a valid '

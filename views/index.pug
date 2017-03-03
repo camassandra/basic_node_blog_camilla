@@ -28,10 +28,8 @@ nav
 
     .h1 Cyber-Poetry CAN save your life. Register to get the most awesome poetry 
 
-    script(src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous")
-    script(src='/js/js.cookie.js')
+    script(type='text/javascript', src='/js/jquery-3.1.1.min.js')
+    script(type='text/javascript', src='/js/js.cookie.js')
     script.
       var hasVisited = Cookies.get('visited')
       if(hasVisited === 'true'){
