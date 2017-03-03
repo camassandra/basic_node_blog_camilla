@@ -6,7 +6,7 @@
     link(href='css/materialize.css')
     link(link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet")
     link(href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet")
-  
+
 
 block content
 body 
@@ -22,34 +22,43 @@ nav
         img(src='images/selfdestr.jpg', alt='infinito', height='142', width='110', align='right') 
 .row
   .h1 REGISTER A NEW USER BELOW
-  form#tfheader
+  form#newForm(method='post', action='/newuserhandler')
     .row
       .tftextinput
-        input(placeholder='Name', id='firstname' type='text')
+        input(placeholder='Name', id='input', name='firstname' type='text')
+        #error_firstname
         |  
         label(for='first_name') First Name
       .tftextinput
-        input(placeholder='Surname' id='secondname' type='text')
+        input(placeholder='Surname' name='secondname' type='text')
+        #error_secondname
         |  
         label(for='last_name') Last Name
     .row
       .tftextinput
-        input(placeholder='new username', id='username')
+        input(placeholder='new username', name='username')
+        #error_username
         |  
         label(for='username') Create a Username
     
     .row
       .tftextinput
-        input#password.validate(placeholder='new password', id='password',  type='password')
+        input#password.validate(placeholder='new password', name='password',  type='password')
+        #error_password
         |  
         label(for='password') Type a New Password
     .row
       .tftextinput
-        input#email.validate(placeholder='new email address', id='email', type='email')
+        input#email.validate(placeholder='new email address', name='email', type='email')
+        #error_email
         |  
         label(for='email') Enter a valid Email Address
     .row
-      input.tfbutton(type='submit', value='submit ')
+      input.tfbutton(type='submit', value='peach')
+
+
+script(type='text/javascript', src='/js/jquery-3.1.1.min.js')
+script(type='text/javascript', src='/js/customjquery.js')
 
 
 
