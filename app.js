@@ -35,11 +35,46 @@ app.get('/register', function(req, response){
 	response.render('newuser')
 });
 //registering a new user
-app.post('/', function(req, response){
+
+app.post('/newuserhandler', function(req, response){
 	console.log('handling new user request')
+	var errorMessage = 'Please enter a valid '
+	var target = '';
 
-})
 
+	if (req.body.firstname.length === 0) {
+		target = 'first name'
+	
+	} 
+	else if (req.body.secondname.length === 0) {
+		target = 'second name'
+		
+	}
+	else if (req.body.username.length === 0) {
+		target = 'username'
+	
+	}
+	else if (req.body.password.length === 0) {
+		target = 'password'
+		
+	}
+	else if (req.body.email.length === 0) {
+		target = 'email address'
+		
+	}
+
+	if (target.length === 0) {
+		Db.Users.create({
+		firstname: req.body.firstname,
+		secondname: req.body.secondname ,
+		username: req.body.username,
+		password: req.body.password,
+		email: req.body.email,
+	})
+		response.redirect('/?message=' + encodeURIComponent("Successfully Registered."));
+	}
+	else response.redirect('/register?message=' + encodeURIComponent(errorMessage + target) + {errMess : errorMessage + target})
+});
 
 //render login page
 app.get('/userlogin', function(req, response){
