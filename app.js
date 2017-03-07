@@ -2,7 +2,8 @@ var express = require ('express');
 var app = express();
 var session = require('express-session');
 var bodyParser = require('body-parser');
-var jsdom = require('jsdom');
+var jsdom = require('jsdom'); //when I was trying to write jquery directly in my app.js...
+var bcrypt = require('bcrypt');
 
 const Db = require(__dirname +'/db_module.js')
 
@@ -83,12 +84,14 @@ app.post('/newuserhandler', function(req, response){
 	else response.redirect('/register?message=' + encodeURIComponent(errorMessage + target))
 });
 
+
 ///creating a session 
 app.use(session({
     secret: '9WpXCpH68X',
     resave: true,
     saveUninitialized: false
 }));
+
 
 //render login page
 app.get('/userlogin', function(req, response){
@@ -181,6 +184,18 @@ app.get('/logout', function (req, response) {
         response.redirect('/?message=' + encodeURIComponent("Successfully logged out."));
     })
 });
+
+
+//just trying out if user session post request works 
+// app.get('/usersession', function(req, response){
+// 	console.log('rendering usersession page')
+// 	Db.Posts.findAll()
+//     .then((allPosts) => {
+//         console.log('allPosts')
+      
+//         response.render('usersession', {posts: allPosts})
+//     })  
+// });
 
 
 //posting new philosophy 
