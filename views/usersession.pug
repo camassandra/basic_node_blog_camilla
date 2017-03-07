@@ -48,7 +48,7 @@ nav
       h2  #{post.title} 
       p #{post.body}
         each comment in post.comments 
-          p <strong> #{comment.comment_author} </strong>
+          p.err #{comment.comment_author}
           p #{comment.comment}
 
       section

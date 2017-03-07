@@ -72,13 +72,17 @@ app.post('/newuserhandler', function(req, response){
 	}
 
 	if (target.length === 0) {
-		Db.Users.create({
-		firstname: req.body.firstname,
-		secondname: req.body.secondname ,
-		username: req.body.username,
-		password: req.body.password,
-		email: req.body.email,
-	})
+		bcrypt.hash(req.body.password, 8, function(err, hash){
+			if (err) throw err
+			Db.Users.create({
+				firstname: req.body.firstname,
+				secondname: req.body.secondname ,
+				username: req.body.username,
+				password: hash,
+				email: req.body.email,
+			})
+		})
+		
 		response.redirect('/?message=' + encodeURIComponent("Successfully Registered."));
 	}
 	else response.redirect('/register?message=' + encodeURIComponent(errorMessage + target))
@@ -161,19 +165,24 @@ app.post('/loginhandler', function(req, response){
         where: {
             username: req.body.username
         }
-    }).then(function (user) {
-        if (user !== null && req.body.password === user.password) {
+    })
+    .then(function (user) {
+    	bcrypt.compare(req.body.password, user.password, function(err, res){
+    		if (err) throw err 
+    		if (user !== null && res) {
             req.session.user = user;
             console.log('rendering usersession page')
             response.redirect('/usersession');
 
-        } else {
-            response.redirect('/userlogin?message=' + encodeURIComponent("Invalid email or password."));
-        }
+	        } else {
+	            response.redirect('/userlogin?message=' + encodeURIComponent("Invalid email or password."));
+	        }
+    	})
+        
     }, function (error) {
         response.redirect('/userlogin?message=' + encodeURIComponent("Invalid email or password."));
     });
-});
+	});
 
 //user can logout from his profile
 app.get('/logout', function (req, response) {

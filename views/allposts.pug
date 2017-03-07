@@ -16,6 +16,8 @@ nav
   .nav-wrapper
     .ul
       .li
+        a.a(href='/') Home
+      .li
         a.a(href='/usersession') Your Session
       .li
         a.a(href='/about') About
@@ -24,9 +26,8 @@ nav
     .h1.err welcome
     each post in posts
     
-      p <strong> #{post.title} </strong>
-   
+      h2 <strong> #{post.title} </strong>
       p #{post.body}
       each comment in post.comments 
-        p #{comment.comment_author}
+        p.err #{comment.comment_author}
         p #{comment.comment}
