@@ -59,8 +59,16 @@ db.sync({
 		password: '1234',
 		email: 'dummyTrump@yahoo.net'	
 	}
+	const usertwo = {
+		firstname: 'mad',
+		secondname: 'max',
+		username: 'dummytwo',
+		password: '0987',
+		email: 'two@gmail.com'
+	}
 
 	Users.create(userone)
+	Users.create(usertwo)
 })
 .catch((error) => console.log(error))
 
@@ -68,16 +76,20 @@ db.sync({
 	const postOne = {
 		title: 'Unbearable',
 		body: 'How I hate rainy days, all is gloomy',
+		userId: 1
+
 	}
 
 	const postTwo = {
 		title: 'Smiling and Suffering',
 		body: 'This is the teaching of the Buddha: You will not be punished for your anger, you will be punished by your anger.',
+		userId: 1	
 	}
 
 	const postThree = {
 		title: 'The moment',
 		body: 'Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.',
+		userId: 2
 	}
 	Posts.create(postOne)
 	Posts.create(postTwo)
@@ -86,11 +98,12 @@ db.sync({
 .catch((error) => console.log(error));
 
 Comments.belongsTo(Posts); //adds Posts ID to Comments
-Posts.hasMany(Comments, {as: 'postID'}); //adds PostsID to Comments
-Users.hasMany(Posts, {as: 'userID'}); //adds UsersID to Posts
+Posts.hasMany(Comments); //adds PostsID to Comments
+Users.hasMany(Posts); //adds UsersID to Posts
 
 module.exports = {
 	Db: db,
 	Posts: Posts,
-	Users: Users
+	Users: Users,
+	Comments: Comments
 }

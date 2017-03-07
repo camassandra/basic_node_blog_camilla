@@ -19,6 +19,8 @@ nav
         a(href='/') Home
       .li
         a(href='/about') About
+      .li
+        a(href='/logout') Logout
       .li 
         img(src='images/selfdestr.jpg', alt='LOGO', height='142', width='110', align='right', href='/about' )
 .row
@@ -42,25 +44,29 @@ nav
 
 
   .h1 OR CONTEMPLATE YOUR OWN CYBERPOETRY 
-    each Post in posts
-    
-      p <strong> #{Post.title} </strong>
-   
-      p #{Post.body}
+    each post in posts
+      h2  #{post.title} 
+      p #{post.body}
+        each comment in post.comments 
+          p <strong> #{comment.comment_author} </strong>
+          p #{comment.comment}
+
       section
       header
       #respond
         h2 Leave a Comment
         form#commentform(method='post', action='/commenthandler')
-          p.required(for='comment_author') Your name  
-            input.tftextinput#comment_author(type='text', name='comment_author', value='', tabindex='1', required='required')
+          p(for='comment_author') Your name  
+            input.tftextinput(type='text', name='comment_author', value='', tabindex='1', required='required')
             
           p.tftextinput.required(for='email') Your email
            
-            input.tftextinput#email(type='email', name='email_author', value='', tabindex='2', required='required')
+            input.tftextinput.required(type='email', name='email_author', value='', tabindex='2', required='required')
            
           p.tftextinput.required(for='comment') Your message
             textarea#comment(name='comment', rows='10', tabindex='4', required='required')
+
+          input(type='hidden', name='post_id', value=post.id)
         
           input.tfbutton(name='submit', type='submit', value='Submit comment')
 

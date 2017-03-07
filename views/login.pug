@@ -22,17 +22,20 @@ nav
       .li 
         img(src='images/selfdestr.jpg', alt='LOGO', height='142', width='110', align='right', href='/about' )
 .row
-  .h1 The dead poets' society is not dead! Login  
+  .h1 The dead poets' society is not dead! 
+  p.err #{message} 
   form#tfheader(method='post', action='/loginhandler')
     .row
       .tftextinput
-        input(placeholder='username' id='username')
+        input(placeholder='new username', name='username')
+        #error_username #{message}
         |  
-        label(for='password') Type your Username
+        label(for='username') Type your Username
     
     .row
       .tftextinput
-        input(placeholder='password' id='userpassw' type='password')
+        input#password.validate(placeholder='new password', name='password',  type='password')
+        #error_password #{message}
         |  
         label(for='password') Type your Password
     .row

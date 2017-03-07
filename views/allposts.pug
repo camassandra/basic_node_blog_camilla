@@ -7,3 +7,26 @@ html
     link(link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet")
     link(href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+
+block content
+body 
+
+nav
+  .nav-wrapper
+    .ul
+      .li
+        a.a(href='/usersession') Your Session
+      .li
+        a.a(href='/about') About
+      .li 
+        img(src='images/selfdestr.jpg', alt='LOGO', height='142', width='110', align='right', href='/about' )
+    .h1.err welcome
+    each post in posts
+    
+      p <strong> #{post.title} </strong>
+   
+      p #{post.body}
+      each comment in post.comments 
+        p #{comment.comment_author}
+        p #{comment.comment}

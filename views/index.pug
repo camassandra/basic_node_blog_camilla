@@ -26,7 +26,9 @@ nav
     p 
     img(src='images/selfdestr.jpg', alt='LOGO', height='142', width='110', align='middle') 
 
-    .h1 Cyber-Poetry CAN save your life. Register to get the most awesome poetry 
+    .h1 Cyber-Poetry CAN save your life. Welcome! 
+
+    h2.err  #{message}
 
     script(type='text/javascript', src='/js/jquery-3.1.1.min.js')
     script(type='text/javascript', src='/js/js.cookie.js')
@@ -34,7 +36,7 @@ nav
       var hasVisited = Cookies.get('visited')
       if(hasVisited === 'true'){
         $(document).ready(function(){
-          $('h1').html('Cyber-Poetry will save your soul. You can log in to see your lifesaving collection')
+          $('.h1').html('Cyber-Poetry CAN  save your life. You can log or register, in to see your lifesaving collection')
         })
       }
       else {
