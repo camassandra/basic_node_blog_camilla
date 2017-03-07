@@ -2,7 +2,8 @@ var express = require ('express');
 var app = express();
 var session = require('express-session');
 var bodyParser = require('body-parser');
-var jsdom = require('jsdom');
+var jsdom = require('jsdom'); //when I was trying to write jquery directly in my app.js...
+var bcrypt = require('bcrypt');
 
 const Db = require(__dirname +'/db_module.js')
 
@@ -80,46 +81,6 @@ app.post('/newuserhandler', function(req, response){
 });
 
 
-    
-app.post('/newuserhandler', function(req, response){
-	console.log('handling new user request')
-	var errorMessage = 'Please enter a valid '
-	var target = '';
-
-
-	if (req.body.firstname.length === 0) {
-		target = 'first name'
-	
-	} 
-	else if (req.body.secondname.length === 0) {
-		target = 'second name'
-		
-	}
-	else if (req.body.username.length === 0) {
-		target = 'username'
-	
-	}
-	else if (req.body.password.length === 0) {
-		target = 'password'
-		
-	}
-	else if (req.body.email.length === 0) {
-		target = 'email address'
-		
-	}
-
-	if (target.length === 0) {
-		Db.Users.create({
-		firstname: req.body.firstname,
-		secondname: req.body.secondname ,
-		username: req.body.username,
-		password: req.body.password,
-		email: req.body.email,
-	})
-		response.redirect('/?message=' + encodeURIComponent("Successfully Registered."));
-	}
-	else response.redirect('/register?message=' + encodeURIComponent(errorMessage + target) + {errMess : errorMessage + target})
-});
 
 //render login page
 app.get('/userlogin', function(req, response){
@@ -129,21 +90,16 @@ app.get('/userlogin', function(req, response){
 });
 
 //just trying out if user session post request works 
-app.get('/usersession', function(req, response){
-	console.log('rendering usersession page')
-	Db.Posts.findAll()
-    .then((allPosts) => {
-        console.log('allPosts')
+// app.get('/usersession', function(req, response){
+// 	console.log('rendering usersession page')
+// 	Db.Posts.findAll()
+//     .then((allPosts) => {
+//         console.log('allPosts')
       
-        response.render('usersession', {posts: allPosts})
-    })  
-});
+//         response.render('usersession', {posts: allPosts})
+//     })  
+// });
 
-
-app.post('/loginhandler', function(req, response){
-
-	response.render('/usersession')
-})
 
 //posting new philosophy 
 app.post('/posthandler', function(req, response){
