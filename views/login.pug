@@ -2,7 +2,7 @@ html
   title CYPoetry_Login User
   head
   style
-  link(type="text/css", href='css/styling.css', rel='stylesheet')
+  link(type="text/css", href='css/main.css', rel='stylesheet')
   link(type="text/css", href='css/materialize.css', media="screen,projection") 
   link(link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet")
   link(href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet")
@@ -30,14 +30,14 @@ nav
     .row
       .tftextinput
         input(placeholder='new username', name='username')
-        #error_username #{message}
+        #error_username 
         |  
         label(for='username') Type your Username
     
     .row
       .tftextinput
         input#password.validate(placeholder='new password', name='password',  type='password')
-        #error_password #{message}
+        #error_password 
         |  
         label(for='password') Type your Password
     .row

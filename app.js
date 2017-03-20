@@ -152,7 +152,7 @@ app.get('/usersession', function(req, response){
 app.post('/loginhandler', function(req, response){
 
     if(req.body.username.length === 0) {
-        response.redirect('/userlogin?message=' + encodeURIComponent("Please fill out your email address."));
+        response.redirect('/userlogin?message=' + encodeURIComponent("Please fill out your username."));
         return;
     }
 
